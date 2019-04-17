@@ -24,7 +24,7 @@
     <h1 class="title is-1">地学数学模型 - 作业一</h1>
     <h3 class="subtitle is-3">骆梁宸 1400012616</h3>
 
-    <div class="menu">
+    <div class="menu" style="margin-bottom: 1.5rem">
       <p class="menu-label">
         问题和解答
       </p>
@@ -34,6 +34,31 @@
         <li><a href="problem3.html">问题三</a></li>
         <li><a href="problem4.html">问题四</a></li>
         <li><a href="problem5.html">问题五</a></li>
+      </ul>
+    </div>
+
+    <h1 class="title">说明</h1>
+    <div class="content">
+      本页面是地学数学模型本次作业代码的运行结果，可点击上方链接查看各个题解。为了方便批阅以及避免教师机器的环境问题导致的运行异常，我们使用 Javascript 完成此次作业，并将可视化结果托管在云端（<a href="https://www.luolc.com/01235080-GeoMathematicalModel/assignment1/">https://www.luolc.com/01235080-GeoMathematicalModel/assignment1/</a>）。请使用最新版本的 Chrome, Safari 或 Firefox 浏览器打开本页面；不支持 IE 或低版本的 Edge 浏览器。当您打开本页面时，代码已经运行完毕并渲染完成相应的界面，如果希望在本地查看，请下载源代码后在浏览器中打开 index.html 文件。
+    </div>
+
+    <h2 class="title is-4">项目结构</h2>
+    <div class="content">
+      源代码主要包含如下部分：
+      <ul>
+        <li>css：界面样式文件</li>
+        <li>img：图片文件（含有问题四的有向图插图）</li>
+        <li>
+          js：主要计算部分
+          <ul>
+            <li>pagination.js：页码模块的超链接辅助实现</li>
+            <li>plot.js：自行实现的绘图库，用于展示直方图和一次函数；接口设计参照 Matplotlib</li>
+            <li><strong>problem1.js ~ problem5.js：各个题目的求解主体代码；可主要批阅这一部分</strong></li>
+          </ul>
+        </li>
+        <li>lib：基础库</li>
+        <li>index.html：本页面，主页</li>
+        <li>problem1.html ~ problem5.html：各个题目结果的可视化展示</li>
       </ul>
     </div>
   </div>
