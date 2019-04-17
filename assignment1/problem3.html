@@ -30,17 +30,19 @@
       </div>
       <div class="message-body">
         <p>假设研究区域为一矩形，矩形的左下角坐标为 (10, 10)，右上角为 (60, 70)，矩形内离散点的坐标为：</p>
-        <div class="level-item has-text-centered">
-          <table class="table problem is-bordered">
-            <tbody>
-            <tr>
-              <td v-for="p in points.slice(0, 10)">{{ p.label + "(" + p.x + "," + p.y + ")" }}</td>
-            </tr>
-            <tr>
-              <td v-for="p in points.slice(10)">{{ p.label + "(" + p.x + "," + p.y + ")" }}</td>
-            </tr>
-            </tbody>
-          </table>
+        <div class="level">
+          <div class="level-item has-text-centered">
+            <table class="table problem is-bordered">
+              <tbody>
+              <tr>
+                <td v-for="p in points.slice(0, 10)">{{ p.label + "(" + p.x + "," + p.y + ")" }}</td>
+              </tr>
+              <tr>
+                <td v-for="p in points.slice(10)">{{ p.label + "(" + p.x + "," + p.y + ")" }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         (1) 根据矩形和点的坐标绘制区域边界和点的分布图形；<br>
         (2) 利用顺序法和区域法计算最邻近平均距离。
@@ -53,23 +55,25 @@
     </div>
 
     <h1 class="title">顺序法计算最邻近平均距离</h1>
-    <div class="level-item has-text-centered">
-      <table class="table is-bordered is-striped is-hoverable">
-        <thead>
-        <tr>
-          <th>点</th>
-          <th>顺序号 1 距离</th>
-          <th>边界距离</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="p in sequentialMethodPoints">
-          <td>{{ p.label }}</td>
-          <td>{{ p.minText }}</td>
-          <td>{{ p.ribText }}</td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="level">
+      <div class="level-item has-text-centered">
+        <table class="table is-bordered is-striped is-hoverable">
+          <thead>
+          <tr>
+            <th>点</th>
+            <th>顺序号 1 距离</th>
+            <th>边界距离</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="p in sequentialMethodPoints">
+            <td>{{ p.label }}</td>
+            <td>{{ p.minText }}</td>
+            <td>{{ p.ribText }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="content">
@@ -81,23 +85,25 @@
     <div class="content">
       取 6 个区域进行计算。
     </div>
-    <div class="level-item has-text-centered">
-      <table class="table is-bordered is-striped is-hoverable">
-        <thead>
-        <tr>
-          <th>点</th>
-          <th v-for="i in [1, 2, 3, 4, 5, 6]">序 {{ i }}</th>
-          <th>边界距离</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="p in regionMethodPoints">
-          <td>{{ p.label }}</td>
-          <td v-for="r in p.results">{{ r.minText }}</td>
-          <td>{{ p.ribText }}</td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="level">
+      <div class="level-item has-text-centered">
+        <table class="table is-bordered is-striped is-hoverable">
+          <thead>
+          <tr>
+            <th>点</th>
+            <th v-for="i in [1, 2, 3, 4, 5, 6]">序 {{ i }}</th>
+            <th>边界距离</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="p in regionMethodPoints">
+            <td>{{ p.label }}</td>
+            <td v-for="r in p.results">{{ r.minText }}</td>
+            <td>{{ p.ribText }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="content">
@@ -107,7 +113,7 @@
   </div>
 
   <nav class="pagination" id="pagination" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" href="index.html">首页</a>
+    <a class="pagination-previous" href="./">首页</a>
     <a class="pagination-previous" :disabled="pageNumber === 1" :href="prevHref">上一题</a>
     <a class="pagination-next" :disabled="pageNumber === 5" :href="nextHref">下一题</a>
     <ul class="pagination-list">

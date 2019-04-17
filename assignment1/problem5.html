@@ -65,44 +65,46 @@
       <p>回归方程：y = {{ a0 }} + {{ a1 }}x</p>
     </div>
 
-    <div class="level-item has-text-centered">
-      <table class="table is-bordered is-hoverable">
-        <thead>
-        <tr>
-          <th>变差来源</th>
-          <th>平方和</th>
-          <th>自由度</th>
-          <th>方差</th>
-          <th>F 检验</th>
-          <th>显著水平</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>回归(因素 x)</th>
-          <td>U = {{ U.toFixed(4) }}</td>
-          <td>1</td>
-          <td>{{ U.toFixed(4) }}</td>
-          <td rowspan="2">F = {{ F.toFixed(4) }} <br> > 14.0280</td>
-          <td>0.001</td>
-        </tr>
-        <tr>
-          <th>剩余(随机因素)</th>
-          <td>Q = {{ Q.toFixed(4) }}</td>
-          <td>{{ samples.length - 2 }}</td>
-          <td>{{ SqSquare.toFixed(4) }}</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>总计</th>
-          <td>{{ SAll.toFixed(4) }}</td>
-          <td>{{ samples.length - 1 }}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="level">
+      <div class="level-item has-text-centered">
+        <table class="table is-bordered is-hoverable">
+          <thead>
+          <tr>
+            <th>变差来源</th>
+            <th>平方和</th>
+            <th>自由度</th>
+            <th>方差</th>
+            <th>F 检验</th>
+            <th>显著水平</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th>回归(因素 x)</th>
+            <td>U = {{ U.toFixed(4) }}</td>
+            <td>1</td>
+            <td>{{ U.toFixed(4) }}</td>
+            <td rowspan="2">F = {{ F.toFixed(4) }} <br> > 14.0280</td>
+            <td>0.001</td>
+          </tr>
+          <tr>
+            <th>剩余(随机因素)</th>
+            <td>Q = {{ Q.toFixed(4) }}</td>
+            <td>{{ samples.length - 2 }}</td>
+            <td>{{ SqSquare.toFixed(4) }}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>总计</th>
+            <td>{{ SAll.toFixed(4) }}</td>
+            <td>{{ samples.length - 1 }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="content">
@@ -117,7 +119,7 @@
   </div>
 
   <nav class="pagination" id="pagination" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" href="index.html">首页</a>
+    <a class="pagination-previous" href="./">首页</a>
     <a class="pagination-previous" :disabled="pageNumber === 1" :href="prevHref">上一题</a>
     <a class="pagination-next" :disabled="pageNumber === 5" :href="nextHref">下一题</a>
     <ul class="pagination-list">
