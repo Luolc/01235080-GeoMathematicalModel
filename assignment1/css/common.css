@@ -1,0 +1,18 @@
+html {
+    background: #f7f7f7;
+}
+
+.main {
+    background: white;
+    margin: 32px auto;
+    padding: 32px;
+    box-shadow: 0 0 10px rgba(50, 50, 50, .17);
+}
+
+.pagination {
+    margin-top: 1.5rem;
+}
+
+.table.problem {
+    margin-top: 1.5rem;
+}

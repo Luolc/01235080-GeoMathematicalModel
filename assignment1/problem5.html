@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache">
+
+  <title>问题五</title>
+
+  <!-- core CSS -->
+  <link href="./lib/css/bulma.css" rel="stylesheet">
+
+  <!-- project CSS -->
+  <link href="./css/common.css" rel="stylesheet">
+  <link href="./css/problem5.css" rel="stylesheet">
+
+  <meta name="title" content="Problem 5">
+  <meta name="description" content="Problem 5">
+</head>
+<body>
+<div class="container main" id="main-container">
+  <div id="main">
+    <h1 class="title is-1">问题五</h1>
+
+    <article class="message">
+      <div class="message-header">
+        <p>题目叙述</p>
+      </div>
+      <div class="message-body">
+        现有二地理要素 x, y，具体资料见表。<br>
+        (1) 求 x, y 的线性相关系数并进行显著性检验；<br>
+        (2) 建立 y 对 x 的回归方程，并对回归方程进行显著性检验；<br>
+        (3) 根据原始数据和回归方程绘制地理要素 x, y 的相关图。
+        <div class="level-item has-text-centered">
+          <table class="table problem is-bordered is-hoverable">
+            <thead>
+            <tr>
+              <th>编号</th>
+              <th>x</th>
+              <th>y</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="sample in samples">
+              <td>{{ sample.number }}</td>
+              <td>{{ sample.x.toFixed(1) }}</td>
+              <td>{{ sample.y.toFixed(1) }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <h1 class="title">线性相关系数和显著性检验</h1>
+    <div class="content">
+      <p>相关系数 r = {{ r }}</p>
+      <p>查表得，当 N - 2 = 24，alpha = 0.001 时，临界系数为 0.60736，有 |r| > 0.60736。说明 x, y 之间线性相关程度达到极显著水平。</p>
+    </div>
+
+    <h1 class="title">回归方程和显著性检验</h1>
+    <div class="content">
+      <p>回归方程：y = {{ a0 }} + {{ a1 }}x</p>
+    </div>
+
+    <div class="level-item has-text-centered">
+      <table class="table is-bordered is-hoverable">
+        <thead>
+        <tr>
+          <th>变差来源</th>
+          <th>平方和</th>
+          <th>自由度</th>
+          <th>方差</th>
+          <th>F 检验</th>
+          <th>显著水平</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>回归(因素 x)</th>
+          <td>U = {{ U.toFixed(4) }}</td>
+          <td>1</td>
+          <td>{{ U.toFixed(4) }}</td>
+          <td rowspan="2">F = {{ F.toFixed(4) }} <br> > 14.0280</td>
+          <td>0.001</td>
+        </tr>
+        <tr>
+          <th>剩余(随机因素)</th>
+          <td>Q = {{ Q.toFixed(4) }}</td>
+          <td>{{ samples.length - 2 }}</td>
+          <td>{{ SqSquare.toFixed(4) }}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>总计</th>
+          <td>{{ SAll.toFixed(4) }}</td>
+          <td>{{ samples.length - 1 }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="content">
+      <p>查表得，当 N1 = 1，N2 = 24，alpha = 0.001 时，临界系数为 14.0280，有 F > 14.0280，说明该回归模型达到极显著水平。</p>
+    </div>
+
+    <h1 class="title" style="margin-bottom: 0">绘制相关图</h1>
+
+    <div class="level-item has-text-centered">
+      <canvas id="canvas" ref="canvas"></canvas>
+    </div>
+  </div>
+
+  <nav class="pagination" id="pagination" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" href="index.html">首页</a>
+    <a class="pagination-previous" :disabled="pageNumber === 1" :href="prevHref">上一题</a>
+    <a class="pagination-next" :disabled="pageNumber === 5" :href="nextHref">下一题</a>
+    <ul class="pagination-list">
+      <li v-for="i in [1, 2, 3, 4, 5]">
+        <a class="pagination-link" :class="{ 'is-current': pageNumber === i }" :href="getLink(i)">
+          {{ i }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<script src="./lib/js/vue.js"></script>
+<script src="js/plot.js"></script>
+<script src="js/problem5.js"></script>
+<script src="js/pagination.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache">
+
+  <title>问题一</title>
+
+  <!-- core CSS -->
+  <link href="./lib/css/bulma.css" rel="stylesheet">
+
+  <!-- project CSS -->
+  <link href="./css/common.css" rel="stylesheet">
+  <link href="./css/problem1.css" rel="stylesheet">
+
+  <meta name="title" content="Problem 1">
+  <meta name="description" content="Problem 1">
+</head>
+<body>
+<div class="container main" id="main-container">
+  <div id="main">
+    <h1 class="title is-1">问题一</h1>
+
+    <article class="message">
+      <div class="message-header">
+        <p>题目叙述</p>
+      </div>
+      <div class="message-body">
+        我们如果想预报北京 1 月气温，就要对北京 1 月气温的历史资料进行分析，了解北京 1 月气温的基本特点，揭示出蕴含在资料内部的一般规律性。先选取 1991~2010 年 20
+        年资料，试分析其频率直方图、累计频率直方图，并计算其均值、方差、变异系数等统计特征值。
+
+        <div class="level-item has-text-centered">
+          <table class="table problem is-bordered is-hoverable">
+            <tbody>
+            <tr>
+              <th>年份</th>
+              <td v-for="y in years.slice(0, 10)">{{ y }}</td>
+            </tr>
+            <tr>
+              <th>温度</th>
+              <td v-for="t in temperatures.slice(0, 10)">{{ t.toFixed(1) }}</td>
+            </tr>
+            <tr>
+              <th>年份</th>
+              <td v-for="y in years.slice(10)">{{ y }}</td>
+            </tr>
+            <tr>
+              <th>温度</th>
+              <td v-for="t in temperatures.slice(10)">{{ t.toFixed(1) }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <h1 class="title" style="margin-bottom: 0">频率直方图</h1>
+
+    <div class="level-item has-text-centered">
+      <canvas id="canvas1" ref="canvas1"></canvas>
+    </div>
+
+    <h1 class="title" style="margin-bottom: 0">累积频率直方图</h1>
+
+    <div class="level-item has-text-centered">
+      <canvas id="canvas2" ref="canvas2"></canvas>
+    </div>
+
+    <h1 class="title">均值</h1>
+    <div class="content">
+      <p>{{ mean }}</p>
+    </div>
+
+    <h1 class="title">(样本)方差</h1>
+    <div class="content">
+      <p>{{ variance }}</p>
+    </div>
+
+    <h1 class="title">变异系数</h1>
+    <div class="content">
+      <p>{{ coefficientOfVariance }}</p>
+    </div>
+  </div>
+
+  <nav class="pagination" id="pagination" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" href="index.html">首页</a>
+    <a class="pagination-previous" :disabled="pageNumber === 1" :href="prevHref">上一题</a>
+    <a class="pagination-next" :disabled="pageNumber === 5" :href="nextHref">下一题</a>
+    <ul class="pagination-list">
+      <li v-for="i in [1, 2, 3, 4, 5]">
+        <a class="pagination-link" :class="{ 'is-current': pageNumber === i }" :href="getLink(i)">
+          {{ i }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<script src="./lib/js/vue.js"></script>
+<script src="js/plot.js"></script>
+<script src="js/problem1.js"></script>
+<script src="js/pagination.js"></script>
+</body>
+</html>
